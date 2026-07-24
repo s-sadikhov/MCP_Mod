@@ -1,7 +1,23 @@
 ---
-title: "MAGLi_cCDP_PosMCP_Mod_package"
-format: html
-editor: visual
+title: "MED probability of success calculation using MCP-MOD"
+subtitle: "Generalized MCP-Mod procedure"
+author: "Shamil Sadikhov"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    toc-location: left
+    number-sections: true
+    code-fold: show
+    code-tools: true
+    theme: cosmo
+    fig-width: 7
+    fig-height: 5
+    embed-resources: true
+execute:
+  warning: false
+  message: falseeditor: visual
 ---
 
 # MED probability of success (PoSMED)
@@ -22,7 +38,6 @@ require(paramtest)
 
 
 ```
-
 
 ```{r}
 
@@ -72,8 +87,6 @@ dat <- sim_dat(dls = gd.obj$dls, ntot = gd.obj$ntot, ngrp = gd.obj$ngrp, Mods.ob
 tapply(dat$resp, dat$dose, mean)
 ```
 
-
-
 ```{r}
 #| echo: false
 #| eval: false
@@ -88,7 +101,6 @@ analy_MCPMod2(sim.obj = dat, Mods.obj.cand = mods5,
               Delta = logit(p.magli) - logit(p.ocr) + 0.1 , 
               alpha = 0.025)
 ```
-
 
 ```{r}
 #| echo: false
@@ -127,7 +139,6 @@ fmod <- MCPModGeneral::MCPModGen(family = "binomial", link = "logit", returnS = 
 
   med
 ```
-
 
 ```{r}
 # Simulation of PosMED
@@ -223,6 +234,7 @@ power_posmed2$results %>%
 # results(power_posmed2)$est.med %>% summary()
 
 ```
+
 ```{r}
 sessionInfo()
 ```
